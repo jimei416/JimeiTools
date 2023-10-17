@@ -7,9 +7,14 @@ const useScrollBottom = (
 ): [
   React.MutableRefObject<null>,
   number,
-  React.Dispatch<React.SetStateAction<number>>
+  React.Dispatch<React.SetStateAction<number>>,
+  {
+    spinning: boolean;
+    setSpinning: React.Dispatch<React.SetStateAction<boolean>>;
+  }
 ] => {
   const [page, setPage] = useState<number>(num);
+  const [spinning, setSpinning] = useState(refresh);
   const target = useRef(null);
 
   useEffect(() => {
@@ -63,7 +68,7 @@ const useScrollBottom = (
     };
   }, [refresh]);
 
-  return [target, page, setPage];
+  return [target, page, setPage,{spinning,setSpinning}];
 };
 
 export default useScrollBottom;

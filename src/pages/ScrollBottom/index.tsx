@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import useScrollBottom from '../../packages/hooks/useScrollBottom'
 const ScrollBottom = ()=>{
-  const [item,setItem] = useState<Array<string>>([])
+  const [item,setItem] = useState<Array<string>>(['1',"1"])
   const [refresh,setRefresh] = useState(true)
-  const [target,page] = useScrollBottom(refresh,2)
+  const [target,page] = useScrollBottom(refresh,1)
 
   useEffect(()=>{
     console.log(page);
@@ -15,7 +15,7 @@ const ScrollBottom = ()=>{
   return (
     <div className={styles.ScrollBottom} ref={target}>
     {item.map(item=>(
-      <div className={styles.item}>{item}</div>
+      <div className={styles.item} key={item}>{item}</div>
     ))}
   </div>
   )
